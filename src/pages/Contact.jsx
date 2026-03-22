@@ -115,26 +115,30 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-ohm-dark text-white">
+    <div className="bg-ohm-deep text-white relative overflow-hidden">
+      {/* Decorative Blobs */}
+      <div className="absolute top-20 -right-32 w-72 h-72 bg-gradient-blob-mint blur-3xl opacity-30 pointer-events-none" />
+      <div className="absolute -bottom-32 left-20 w-80 h-80 bg-gradient-blob-rose blur-3xl opacity-20 pointer-events-none" />
+
       {/* Hero Section */}
-      <section className="section-dark px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-32 z-10">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
             Pojďme si promluvit
           </h1>
-          <p className="text-lg sm:text-xl text-ohm-warm-gray mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-ohm-slate mb-8 max-w-2xl mx-auto">
             Rádi se dozvíme o vašich HR výzvách a navrhneme řešení na míru.
           </p>
         </motion.div>
       </section>
 
       {/* Contact Section */}
-      <section className="section-light px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-32 z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16"
@@ -146,12 +150,12 @@ export default function Contact() {
             {/* Left Column - Contact Form */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-2"
+              className="lg:col-span-2 glass-card-light p-8"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Jméno a příjmení
                   </label>
                   <input
@@ -160,14 +164,14 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                     placeholder="Vaše jméno"
                   />
                 </div>
 
                 {/* Company */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Firma
                   </label>
                   <input
@@ -176,14 +180,14 @@ export default function Contact() {
                     value={formData.company}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                     placeholder="Název vaší firmy"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Email
                   </label>
                   <input
@@ -192,14 +196,14 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                     placeholder="vase@email.cz"
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Telefon
                   </label>
                   <input
@@ -207,14 +211,14 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                     placeholder="+420 XXX XXX XXX"
                   />
                 </div>
 
                 {/* Position */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Pozice ve firmě
                   </label>
                   <input
@@ -222,21 +226,21 @@ export default function Contact() {
                     name="position"
                     value={formData.position}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                     placeholder="Váša pozice"
                   />
                 </div>
 
                 {/* Company Size */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Velikost firmy
                   </label>
                   <select
                     name="companySize"
                     value={formData.companySize}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all"
                   >
                     <option value="">Vyberte velikost</option>
                     {companySizes.map((size) => (
@@ -249,7 +253,7 @@ export default function Contact() {
 
                 {/* Interests */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-3">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-3">
                     Co vás zajímá?
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -264,9 +268,9 @@ export default function Contact() {
                           value={interest}
                           checked={formData.interests.includes(interest)}
                           onChange={handleInputChange}
-                          className="w-5 h-5 rounded border border-ohm-gold/30 text-ohm-gold bg-white cursor-pointer accent-ohm-gold"
+                          className="w-5 h-5 rounded border border-ohm-lavender/30 bg-white cursor-pointer accent-ohm-mint"
                         />
-                        <span className="text-ohm-dark group-hover:text-ohm-gold transition-colors">
+                        <span className="text-ohm-deep group-hover:text-ohm-mint transition-colors">
                           {interest}
                         </span>
                       </label>
@@ -276,7 +280,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-semibold text-ohm-dark mb-2">
+                  <label className="block text-sm font-semibold text-ohm-deep mb-2">
                     Zpráva
                   </label>
                   <textarea
@@ -284,7 +288,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-gold/20 text-ohm-dark placeholder-ohm-slate focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-ohm-lavender/20 text-ohm-deep placeholder-ohm-slate focus:outline-none focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 transition-all resize-none"
                     placeholder="Vaše zpráva..."
                   />
                 </div>
@@ -302,7 +306,7 @@ export default function Contact() {
                     <div
                       className={`p-4 rounded-lg flex items-start gap-3 ${
                         formStatus.type === 'success'
-                          ? 'bg-ohm-teal/10 border border-ohm-teal text-ohm-teal'
+                          ? 'bg-ohm-mint/10 border border-ohm-mint text-ohm-mint'
                           : 'bg-lidi-coral/10 border border-lidi-coral text-lidi-coral'
                       }`}
                     >
@@ -337,12 +341,12 @@ export default function Contact() {
               {/* Email */}
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-ohm-gold/20 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-ohm-gold" />
+                  <div className="w-12 h-12 rounded-full bg-ohm-lavender/20 flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-ohm-lavender" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-ohm-slate">Email</p>
-                    <p className="text-ohm-dark font-semibold">
+                    <p className="text-white font-semibold">
                       info@ohmarketing.cz
                     </p>
                   </div>
@@ -352,14 +356,14 @@ export default function Contact() {
               {/* Phone */}
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-ohm-gold/20 flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-ohm-gold" />
+                  <div className="w-12 h-12 rounded-full bg-ohm-lavender/20 flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-ohm-lavender" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-ohm-slate">
                       Telefon
                     </p>
-                    <p className="text-ohm-dark font-semibold">
+                    <p className="text-white font-semibold">
                       +420 XXX XXX XXX
                     </p>
                   </div>
@@ -369,14 +373,14 @@ export default function Contact() {
               {/* Location */}
               <div>
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-ohm-gold/20 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-ohm-gold" />
+                  <div className="w-12 h-12 rounded-full bg-ohm-lavender/20 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-ohm-lavender" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-ohm-slate">
                       Lokace
                     </p>
-                    <p className="text-ohm-dark font-semibold">
+                    <p className="text-white font-semibold">
                       Praha, Česká republika
                     </p>
                   </div>
@@ -393,16 +397,16 @@ export default function Contact() {
                     href="#"
                     whileHover={{ scale: 1.1, rotate: 10 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full bg-ohm-gold/20 flex items-center justify-center hover:bg-ohm-gold/30 transition-colors"
+                    className="w-10 h-10 rounded-full bg-ohm-lavender/20 flex items-center justify-center hover:bg-ohm-lavender/30 transition-colors"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin className="w-5 h-5 text-ohm-gold" />
+                    <Linkedin className="w-5 h-5 text-ohm-lavender" />
                   </motion.a>
                 </div>
               </div>
 
               {/* Map Placeholder */}
-              <div className="rounded-lg bg-ohm-warm-gray h-48 flex items-center justify-center text-ohm-slate border border-ohm-gold/10">
+              <div className="rounded-2xl bg-ohm-navy/40 h-48 flex items-center justify-center text-ohm-slate border border-ohm-lavender/20">
                 <div className="text-center">
                   <MapPin className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   <p className="font-medium">Mapa</p>
@@ -414,7 +418,7 @@ export default function Contact() {
       </section>
 
       {/* Partners Section */}
-      <section className="section-dark px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-24 z-10">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -422,25 +426,25 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-lg text-ohm-warm-gray mb-8">Jsme projekt společností</p>
+          <p className="text-lg text-ohm-mint mb-8">Jsme projekt společností</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
             {/* Human Capital Logo Placeholder */}
             <motion.a
               href="#"
               whileHover={{ scale: 1.05 }}
-              className="px-8 py-4 bg-white/10 rounded-lg border border-white/10 hover:border-ohm-gold/30 transition-all"
+              className="glass-card px-8 py-4 hover:border-ohm-mint/50 transition-all"
             >
-              <p className="text-ohm-gold font-semibold">Human Capital</p>
+              <p className="text-ohm-mint font-semibold">Human Capital</p>
             </motion.a>
 
             {/* Pracovna Logo Placeholder */}
             <motion.a
               href="#"
               whileHover={{ scale: 1.05 }}
-              className="px-8 py-4 bg-white/10 rounded-lg border border-white/10 hover:border-ohm-gold/30 transition-all"
+              className="glass-card px-8 py-4 hover:border-ohm-mint/50 transition-all"
             >
-              <p className="text-ohm-gold font-semibold">Pracovna</p>
+              <p className="text-ohm-mint font-semibold">Pracovna</p>
             </motion.a>
           </div>
         </motion.div>

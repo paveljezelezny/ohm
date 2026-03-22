@@ -50,9 +50,13 @@ export default function ClientLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-ohm-dark flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-ohm-deep flex items-center justify-center px-4 py-12 relative overflow-hidden">
+      {/* Decorative Blobs */}
+      <div className="absolute top-32 right-1/4 w-96 h-96 bg-gradient-blob-mint blur-3xl opacity-20 pointer-events-none" />
+      <div className="absolute bottom-0 -left-32 w-80 h-80 bg-gradient-blob-lavender blur-3xl opacity-15 pointer-events-none" />
+
       <motion.div
-        className="w-full max-w-md"
+        className="w-full max-w-md relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -60,12 +64,15 @@ export default function ClientLogin() {
         {/* Card */}
         <motion.div
           variants={itemVariants}
-          className="bg-ohm-navy rounded-2xl shadow-2xl shadow-black/50 p-8 md:p-10"
+          className="glass-card bg-ohm-navy/80 p-8 md:p-10 border-ohm-violet"
         >
           {/* Logo */}
           <motion.div variants={itemVariants} className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-ohm-gold rounded-full mb-4">
-              <span className="text-2xl font-bold text-ohm-dark">OHM</span>
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+              style={{
+                background: 'linear-gradient(135deg, #7AEDC6, #9B7AEA)'
+              }}>
+              <span className="text-2xl font-bold text-ohm-deep">OHM</span>
             </div>
           </motion.div>
 
@@ -85,14 +92,14 @@ export default function ClientLogin() {
                 E-mailová adresa
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ohm-gold" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ohm-lavender" />
                 <input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="vas@email.cz"
-                  className="w-full pl-12 pr-4 py-3 bg-ohm-dark border border-ohm-gold/20 rounded-lg text-white placeholder-ohm-slate/50 focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-3 bg-ohm-deep border border-ohm-violet focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 rounded-lg text-white placeholder-ohm-slate/50 focus:outline-none transition-all duration-300"
                   required
                 />
               </div>
@@ -104,20 +111,20 @@ export default function ClientLogin() {
                 Heslo
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ohm-gold" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ohm-lavender" />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3 bg-ohm-dark border border-ohm-gold/20 rounded-lg text-white placeholder-ohm-slate/50 focus:outline-none focus:border-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 transition-all duration-300"
+                  className="w-full pl-12 pr-12 py-3 bg-ohm-deep border border-ohm-violet focus:border-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 rounded-lg text-white placeholder-ohm-slate/50 focus:outline-none transition-all duration-300"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-ohm-gold hover:text-ohm-gold-light transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-ohm-lavender hover:text-ohm-mint transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -135,13 +142,13 @@ export default function ClientLogin() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-ohm-gold/20 bg-ohm-dark text-ohm-gold focus:ring-2 focus:ring-ohm-gold/20 cursor-pointer"
+                  className="w-4 h-4 rounded border-ohm-violet bg-ohm-deep text-ohm-mint focus:ring-2 focus:ring-ohm-mint/20 cursor-pointer accent-ohm-mint"
                 />
                 <span className="text-sm text-ohm-slate">Zapamatovat si mě</span>
               </label>
               <Link
                 to="#"
-                className="text-sm text-ohm-gold hover:text-ohm-gold-light transition-colors"
+                className="text-sm text-ohm-mint hover:text-ohm-mint-light transition-colors"
               >
                 Zapomenuté heslo?
               </Link>
@@ -159,7 +166,7 @@ export default function ClientLogin() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                  className="w-5 h-5 border-2 border-ohm-dark border-t-transparent rounded-full"
+                  className="w-5 h-5 border-2 border-ohm-deep border-t-transparent rounded-full"
                 />
               ) : (
                 'Přihlásit se'
@@ -172,21 +179,21 @@ export default function ClientLogin() {
             variants={itemVariants}
             className="my-6 flex items-center gap-3"
           >
-            <div className="flex-1 h-px bg-ohm-gold/20" />
+            <div className="flex-1 h-px bg-ohm-violet/40" />
             <span className="text-xs text-ohm-slate">nebo</span>
-            <div className="flex-1 h-px bg-ohm-gold/20" />
+            <div className="flex-1 h-px bg-ohm-violet/40" />
           </motion.div>
 
           {/* Support Note */}
           <motion.div
             variants={itemVariants}
-            className="text-center p-4 bg-ohm-gold/10 rounded-lg border border-ohm-gold/20"
+            className="text-center p-4 bg-ohm-mint/10 rounded-lg border border-ohm-mint/20"
           >
             <p className="text-xs text-ohm-slate">
               Nemáte přístup?{' '}
               <a
                 href="mailto:info@ohmarketing.cz"
-                className="text-ohm-gold hover:text-ohm-gold-light font-semibold transition-colors"
+                className="text-ohm-mint hover:text-ohm-mint-light font-semibold transition-colors"
               >
                 Kontaktujte nás na info@ohmarketing.cz
               </a>
@@ -197,7 +204,7 @@ export default function ClientLogin() {
           <motion.div variants={itemVariants} className="text-center mt-8">
             <Link
               to="/"
-              className="text-sm text-ohm-slate hover:text-ohm-gold transition-colors"
+              className="text-sm text-ohm-slate hover:text-ohm-mint transition-colors"
             >
               ← Zpět na hlavní stránku
             </Link>

@@ -11,34 +11,67 @@
 
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
   }
 
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #1A0E2E;
+    color: #F8F4FF;
   }
 
   ::selection {
-    background-color: #C8A35F;
-    color: #0B1426;
+    background-color: #7AEDC6;
+    color: #1A0E2E;
   }
 }
 
 @layer components {
+  /* === BUTTONS === */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-3.5 bg-ohm-gold text-ohm-dark font-semibold rounded-full
-    hover:bg-ohm-gold-light transition-all duration-300 hover:shadow-lg hover:shadow-ohm-gold/25 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-full
+    transition-all duration-300 hover:-translate-y-0.5;
+    background: linear-gradient(135deg, #7AEDC6, #9B7AEA);
+    color: #1A0E2E;
+    box-shadow: 0 4px 20px rgba(122, 237, 198, 0.25);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 8px 30px rgba(122, 237, 198, 0.4);
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-8 py-3.5 border-2 border-ohm-gold text-ohm-gold font-semibold rounded-full
-    hover:bg-ohm-gold hover:text-ohm-dark transition-all duration-300 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-3.5 border-2 font-semibold rounded-full
+    transition-all duration-300 hover:-translate-y-0.5;
+    border-color: #7AEDC6;
+    color: #7AEDC6;
+  }
+  .btn-outline:hover {
+    background: rgba(122, 237, 198, 0.1);
   }
 
   .btn-lidi {
-    @apply inline-flex items-center justify-center px-8 py-3.5 bg-lidi-coral text-white font-semibold rounded-full
-    hover:bg-lidi-coral-dark transition-all duration-300 hover:shadow-lg hover:shadow-lidi-coral/25 hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-full
+    transition-all duration-300 hover:-translate-y-0.5;
+    background: linear-gradient(135deg, #E8A0BF, #E86C8A);
+    color: #1A0E2E;
+    box-shadow: 0 4px 20px rgba(232, 160, 191, 0.25);
+  }
+  .btn-lidi:hover {
+    box-shadow: 0 8px 30px rgba(232, 160, 191, 0.4);
+  }
+
+  .btn-lavender {
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-full
+    transition-all duration-300 hover:-translate-y-0.5;
+    background: linear-gradient(135deg, #9B7AEA, #B99BF5);
+    color: #1A0E2E;
+    box-shadow: 0 4px 20px rgba(155, 122, 234, 0.25);
+  }
+
+  /* === SECTIONS === */
+  .section-deep {
+    @apply bg-ohm-deep text-white;
   }
 
   .section-dark {
@@ -50,19 +83,63 @@
   }
 
   .section-light {
-    @apply bg-ohm-cream text-ohm-dark;
+    @apply text-ohm-deep;
+    background: linear-gradient(180deg, #F8F4FF 0%, #EDE5FF 100%);
   }
 
+  /* === GRADIENT TEXT === */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-ohm-gold to-ohm-teal;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #7AEDC6, #E8A0BF, #9B7AEA);
   }
 
+  .gradient-text-mint {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #7AEDC6, #A5F4DC);
+  }
+
+  /* === GLASS CARDS === */
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+    @apply backdrop-blur-xl border rounded-2xl;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(122, 237, 198, 0.2);
   }
 
   .glass-card-light {
-    @apply bg-white/80 backdrop-blur-lg border border-ohm-gold/10 rounded-2xl shadow-xl;
+    @apply backdrop-blur-xl border rounded-2xl shadow-xl;
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(155, 122, 234, 0.15);
+  }
+
+  /* === DECORATIVE BLOB === */
+  .blob {
+    @apply absolute rounded-full filter blur-3xl opacity-60;
+    animation: blob-morph 8s ease-in-out infinite;
+  }
+  .blob-mint {
+    background: radial-gradient(circle, #7AEDC6, #7AEDC640);
+  }
+  .blob-rose {
+    background: radial-gradient(circle, #E8A0BF, #E8A0BF40);
+  }
+  .blob-lavender {
+    background: radial-gradient(circle, #9B7AEA, #9B7AEA40);
+  }
+
+  /* === GEOMETRIC DECORATIONS === */
+  .deco-circle {
+    @apply absolute rounded-full;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+  }
+  .deco-plus {
+    @apply absolute text-white/20 text-xl font-light select-none;
+  }
+  .deco-x {
+    @apply absolute text-white/15 text-sm font-light select-none;
   }
 }
 
@@ -72,47 +149,45 @@
   }
 }
 
-/* Scrollbar styling */
+/* === SCROLLBAR === */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0B1426;
+  background: #1A0E2E;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #C8A35F;
+  background: #9B7AEA;
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4B978;
+  background: #B99BF5;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* === KEYFRAMES === */
+@keyframes blob-morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0, 0) scale(1);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  33% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: translate(10px, -10px) scale(1.05);
   }
+  66% {
+    border-radius: 50% 30% 50% 70% / 40% 70% 30% 60%;
+    transform: translate(-10px, 10px) scale(0.95);
+  }
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-15px) rotate(180deg); opacity: 0.6; }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(200, 163, 95, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(200, 163, 95, 0.6);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  0%, 100% { box-shadow: 0 0 20px rgba(122, 237, 198, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(122, 237, 198, 0.5); }
 }
 
 .animate-pulse-glow {

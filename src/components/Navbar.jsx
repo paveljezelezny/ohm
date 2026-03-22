@@ -31,8 +31,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-ohm-dark/95 backdrop-blur-sm shadow-lg'
-          : 'bg-ohm-dark/50 backdrop-blur-xs'
+          ? 'glass-card bg-ohm-deep/95 backdrop-blur-md shadow-lg'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,11 +41,11 @@ export default function Navbar() {
           <Link to="/" className="flex flex-col group cursor-pointer">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold text-white tracking-wider"
+              className="gradient-text text-2xl font-bold tracking-wider"
             >
               OHM
             </motion.div>
-            <div className="text-xs text-gray-400 group-hover:text-ohm-gold transition-colors">
+            <div className="text-xs text-ohm-slate group-hover:text-ohm-mint transition-colors">
               Organic HR Marketing
             </div>
           </Link>
@@ -59,8 +59,8 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-ohm-gold bg-white/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      ? 'text-ohm-mint bg-ohm-mint/10'
+                      : 'text-ohm-slate hover:text-ohm-mint hover:bg-ohm-mint/5'
                   }`
                 }
               >
@@ -76,8 +76,8 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `hidden md:flex items-center space-x-1 px-4 py-2 rounded-md font-medium transition-all duration-200 ${
                   isActive
-                    ? 'text-ohm-gold bg-white/10'
-                    : 'text-gray-300 hover:text-ohm-gold hover:bg-white/5'
+                    ? 'text-ohm-lavender bg-ohm-lavender/10'
+                    : 'text-ohm-lavender hover:text-ohm-mint hover:bg-ohm-lavender/5'
                 }`
               }
             >
@@ -88,7 +88,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-ohm-slate hover:text-ohm-mint hover:bg-ohm-mint/10 transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -101,7 +101,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden border-t border-white/10 bg-ohm-dark/95 backdrop-blur-sm"
+            className="md:hidden border-t border-ohm-violet bg-ohm-deep/95 backdrop-blur-md"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navLinks.map((link) => (
@@ -112,8 +112,8 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                       isActive
-                        ? 'text-ohm-gold bg-white/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                        ? 'text-ohm-mint bg-ohm-mint/10'
+                        : 'text-ohm-slate hover:text-ohm-mint hover:bg-ohm-mint/5'
                     }`
                   }
                 >
@@ -126,8 +126,8 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `flex items-center space-x-1 px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActive
-                      ? 'text-ohm-gold bg-white/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      ? 'text-ohm-lavender bg-ohm-lavender/10'
+                      : 'text-ohm-lavender hover:text-ohm-mint hover:bg-ohm-lavender/5'
                   }`
                 }
               >

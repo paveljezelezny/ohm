@@ -205,7 +205,7 @@ const LidiProsim = () => {
       {/* Hero Section */}
       <section className="bg-lidi-warm min-h-screen flex items-center relative overflow-hidden pt-20">
         {/* Decorative elements */}
-        <div className="absolute top-10 right-10 w-40 h-40 bg-lidi-orange/10 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-10 w-40 h-40 bg-lidi-rose/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-60 h-60 bg-lidi-coral/5 rounded-full blur-3xl" />
 
         <motion.div
@@ -224,7 +224,7 @@ const LidiProsim = () => {
             >
               <Link
                 to="/"
-                className="text-sm font-semibold text-lidi-coral hover:text-lidi-orange transition-colors flex items-center gap-2"
+                className="text-sm font-semibold text-lidi-coral hover:text-lidi-rose transition-colors flex items-center gap-2"
               >
                 <Radio className="w-4 h-4" />
                 Projekt OHM - Organic HR Marketing
@@ -327,7 +327,7 @@ const LidiProsim = () => {
                 onMouseLeave={() => setHoveredEpisode(null)}
               >
                 {/* Card Header with Episode Number */}
-                <div className="bg-gradient-to-r from-lidi-coral to-lidi-orange p-6 relative">
+                <div className="bg-gradient-to-r from-lidi-coral to-lidi-rose p-6 relative">
                   <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full w-14 h-14 flex items-center justify-center">
                     <span className="text-white font-bold text-lg">#{episode.number}</span>
                   </div>
@@ -348,7 +348,7 @@ const LidiProsim = () => {
                   {/* Duration and Date */}
                   <div className="flex flex-wrap gap-3 mb-4 pb-4 border-b border-lidi-warm">
                     <div className="flex items-center gap-2 text-gray-600 text-sm">
-                      <Clock className="w-4 h-4 text-lidi-orange" />
+                      <Clock className="w-4 h-4 text-lidi-coral" />
                       <span>{episode.duration}</span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-600 text-sm">
@@ -358,7 +358,7 @@ const LidiProsim = () => {
 
                   {/* Links */}
                   <div className="space-y-2">
-                    <button className="w-full flex items-center justify-center gap-2 py-2 bg-lidi-coral text-white rounded-lg font-semibold hover:bg-lidi-orange transition-colors duration-300 group">
+                    <button className="w-full flex items-center justify-center gap-2 py-2 bg-lidi-coral text-white rounded-lg font-semibold hover:bg-lidi-rose transition-colors duration-300 group">
                       <Play className="w-4 h-4" />
                       Poslechnout
                     </button>
@@ -541,7 +541,7 @@ const LidiProsim = () => {
                 variants={itemVariants}
               >
                 {/* Company Logo Placeholder */}
-                <div className="w-full h-24 bg-gradient-to-br from-lidi-coral/10 to-lidi-orange/10 rounded-xl flex items-center justify-center mb-6 group-hover:from-lidi-coral/20 group-hover:to-lidi-orange/20 transition-colors duration-300">
+                <div className="w-full h-24 bg-gradient-to-br from-lidi-coral/10 to-lidi-rose/10 rounded-xl flex items-center justify-center mb-6 group-hover:from-lidi-coral/20 group-hover:to-lidi-rose/20 transition-colors duration-300">
                   <Building2 className="w-12 h-12 text-lidi-coral/50 group-hover:text-lidi-coral transition-colors duration-300" />
                 </div>
 
@@ -573,7 +573,7 @@ const LidiProsim = () => {
       </section>
 
       {/* Listen On Section */}
-      <section className="bg-lidi-coral py-24">
+      <section className="bg-gradient-to-r from-lidi-coral to-lidi-rose py-24">
         <motion.div
           className="container mx-auto px-4"
           variants={containerVariants}

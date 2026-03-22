@@ -32,13 +32,13 @@ export default function ClientPortal() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center"
+          className="glass-card-light p-8 text-center max-w-md"
         >
-          <h1 className="text-3xl font-bold text-ohm-dark mb-4">Přístup zamítnut</h1>
+          <h1 className="text-3xl font-bold text-ohm-deep mb-4">Přístup zamítnut</h1>
           <p className="text-ohm-slate mb-8">
             Musíte se přihlásit pro přístup k klientské zóně.
           </p>
-          <Link to="/klientska-zona/login" className="btn-primary">
+          <Link to="/klientska-zona/login" className="btn-primary inline-block">
             Přihlásit se
           </Link>
         </motion.div>
@@ -67,7 +67,7 @@ export default function ClientPortal() {
       type: 'video',
       duration: '45 min',
       category: 'Vzdělávání',
-      categoryColor: 'bg-blue-100 text-blue-700',
+      categoryColor: 'bg-ohm-lavender/20 text-ohm-lavender',
       date: '20. března 2026',
       icon: Play,
     },
@@ -77,7 +77,7 @@ export default function ClientPortal() {
       type: 'document',
       format: 'XLSX',
       category: 'Template',
-      categoryColor: 'bg-emerald-100 text-emerald-700',
+      categoryColor: 'bg-ohm-mint/20 text-ohm-mint',
       date: '18. března 2026',
       icon: FileIcon,
     },
@@ -86,7 +86,7 @@ export default function ClientPortal() {
       title: 'Case Study: IT firma 500+ zaměstnanců',
       type: 'pdf',
       category: 'Case Study',
-      categoryColor: 'bg-purple-100 text-purple-700',
+      categoryColor: 'bg-ohm-rose/20 text-ohm-rose',
       date: '15. března 2026',
       icon: FileText,
     },
@@ -96,7 +96,7 @@ export default function ClientPortal() {
       type: 'video',
       duration: '30 min',
       category: 'Vzdělávání',
-      categoryColor: 'bg-blue-100 text-blue-700',
+      categoryColor: 'bg-ohm-lavender/20 text-ohm-lavender',
       date: '12. března 2026',
       icon: Play,
     },
@@ -105,7 +105,7 @@ export default function ClientPortal() {
       title: 'Gallup Q12 - interpretace výsledků',
       type: 'pdf',
       category: 'Nástroje',
-      categoryColor: 'bg-amber-100 text-amber-700',
+      categoryColor: 'bg-ohm-peach/20 text-ohm-peach',
       date: '10. března 2026',
       icon: FileText,
     },
@@ -114,7 +114,7 @@ export default function ClientPortal() {
       title: 'Best practices: LinkedIn pro HR',
       type: 'article',
       category: 'Know-how',
-      categoryColor: 'bg-rose-100 text-rose-700',
+      categoryColor: 'bg-ohm-mint/20 text-ohm-mint',
       date: '8. března 2026',
       icon: FileIcon,
     },
@@ -125,15 +125,15 @@ export default function ClientPortal() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-xl shadow-sm border border-ohm-warm-gray p-6 hover:shadow-md transition-shadow"
+      className="bg-white rounded-xl shadow-sm border border-ohm-lavender/10 p-6 hover:shadow-md transition-shadow"
     >
       <div className="flex items-start justify-between">
         <div>
           <p className="text-ohm-slate text-sm font-medium mb-2">{label}</p>
-          <p className="text-2xl font-bold text-ohm-dark">{value}</p>
+          <p className="text-2xl font-bold text-ohm-deep">{value}</p>
         </div>
-        <div className="w-12 h-12 bg-ohm-gold/10 rounded-lg flex items-center justify-center">
-          <Icon className="w-6 h-6 text-ohm-gold" />
+        <div className="w-12 h-12 bg-ohm-lavender/10 rounded-lg flex items-center justify-center">
+          <Icon className="w-6 h-6 text-ohm-lavender" />
         </div>
       </div>
     </motion.div>
@@ -148,12 +148,12 @@ export default function ClientPortal() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         whileHover={{ y: -4 }}
-        className="bg-white rounded-xl shadow-sm border border-ohm-warm-gray overflow-hidden hover:shadow-lg transition-all"
+        className="bg-white rounded-xl shadow-sm border border-ohm-lavender/10 overflow-hidden hover:shadow-lg transition-all"
       >
         {/* Card Header with Icon */}
-        <div className="bg-gradient-to-r from-ohm-gold/10 to-ohm-gold/5 p-6 border-b border-ohm-warm-gray">
+        <div className="bg-gradient-to-r from-ohm-mint/10 to-ohm-lavender/5 p-6 border-b border-ohm-lavender/10">
           <div className="flex items-start justify-between">
-            <IconComponent className="w-8 h-8 text-ohm-gold" />
+            <IconComponent className="w-8 h-8 text-ohm-lavender" />
             <span className={`text-xs font-semibold px-3 py-1 rounded-full ${material.categoryColor}`}>
               {material.category}
             </span>
@@ -162,7 +162,7 @@ export default function ClientPortal() {
 
         {/* Card Body */}
         <div className="p-6">
-          <h3 className="text-lg font-semibold text-ohm-dark mb-3 line-clamp-2">
+          <h3 className="text-lg font-semibold text-ohm-deep mb-3 line-clamp-2">
             {material.title}
           </h3>
 
@@ -185,7 +185,7 @@ export default function ClientPortal() {
             className={`w-full py-2.5 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
               material.type === 'pdf' || material.type === 'document'
                 ? 'bg-ohm-navy/10 text-ohm-navy hover:bg-ohm-navy/20'
-                : 'bg-ohm-gold/10 text-ohm-gold hover:bg-ohm-gold/20'
+                : 'bg-ohm-mint/10 text-ohm-mint hover:bg-ohm-mint/20'
             }`}
           >
             {material.type === 'pdf' || material.type === 'document' ? (
@@ -220,8 +220,11 @@ export default function ClientPortal() {
           <div className="flex flex-col h-full p-6">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-ohm-gold rounded-full flex items-center justify-center">
-                <span className="font-bold text-ohm-dark text-lg">OHM</span>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, #7AEDC6, #9B7AEA)'
+                }}>
+                <span className="font-bold text-ohm-deep text-lg">OHM</span>
               </div>
               <h2 className="font-bold text-lg">OHM</h2>
             </div>
@@ -230,7 +233,7 @@ export default function ClientPortal() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="mb-8 pb-6 border-b border-ohm-gold/20"
+              className="mb-8 pb-6 border-b border-ohm-violet"
             >
               <p className="text-xs text-ohm-slate mb-2">Přihlášen jako</p>
               <p className="font-semibold text-white">{user?.email}</p>
@@ -250,8 +253,8 @@ export default function ClientPortal() {
                     whileHover={{ x: 4 }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                       activeTab === item.id
-                        ? 'bg-ohm-gold text-ohm-dark font-semibold'
-                        : 'text-ohm-slate hover:bg-ohm-dark/50 hover:text-white'
+                        ? 'bg-gradient-to-r from-ohm-mint to-ohm-lavender text-ohm-deep font-semibold'
+                        : 'text-ohm-slate hover:bg-ohm-violet/50 hover:text-white'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -266,7 +269,7 @@ export default function ClientPortal() {
               onClick={handleLogout}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-ohm-gold/10 border border-ohm-gold/30 rounded-lg text-ohm-gold hover:bg-ohm-gold/20 transition-all duration-300 font-semibold"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-ohm-mint/30 rounded-lg text-ohm-mint hover:bg-ohm-mint/10 transition-all duration-300 font-semibold"
             >
               <LogOut className="w-5 h-5" />
               Odhlásit se
@@ -289,7 +292,7 @@ export default function ClientPortal() {
       {/* Main Content */}
       <div className="flex-1">
         {/* Top Bar */}
-        <div className="bg-white shadow-sm border-b border-ohm-warm-gray sticky top-0 z-20">
+        <div className="bg-white shadow-sm border-b border-ohm-lavender/10 sticky top-0 z-20">
           <div className="px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
@@ -297,17 +300,17 @@ export default function ClientPortal() {
                 className="md:hidden p-2 hover:bg-ohm-cream rounded-lg transition-colors"
               >
                 {sidebarOpen ? (
-                  <X className="w-6 h-6 text-ohm-dark" />
+                  <X className="w-6 h-6 text-ohm-deep" />
                 ) : (
-                  <Menu className="w-6 h-6 text-ohm-dark" />
+                  <Menu className="w-6 h-6 text-ohm-deep" />
                 )}
               </button>
-              <h1 className="text-2xl font-bold text-ohm-dark">Klientská zóna</h1>
+              <h1 className="text-2xl font-bold text-ohm-deep">Klientská zóna</h1>
             </div>
             <div className="flex items-center gap-4">
               <div className="hidden sm:flex items-center gap-2 text-sm">
                 <span className="text-ohm-slate">Přihlášen:</span>
-                <span className="font-semibold text-ohm-dark">{user?.email}</span>
+                <span className="font-semibold text-ohm-deep">{user?.email}</span>
               </div>
             </div>
           </div>
@@ -329,7 +332,7 @@ export default function ClientPortal() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="text-3xl font-bold text-ohm-dark mb-2">
+                <h2 className="text-3xl font-bold text-ohm-deep mb-2">
                   Vítejte v klientské zóně OHM
                 </h2>
                 <p className="text-ohm-slate">
@@ -353,7 +356,7 @@ export default function ClientPortal() {
               {/* Recent Materials */}
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold text-ohm-dark mb-2">Nové materiály</h3>
+                  <h3 className="text-xl font-bold text-ohm-deep mb-2">Nové materiály</h3>
                   <p className="text-ohm-slate">
                     Poslední přidané materiály z vaší klientské knihovny
                   </p>
@@ -378,12 +381,12 @@ export default function ClientPortal() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-xl shadow-sm border border-ohm-warm-gray p-12 text-center"
+              className="bg-white rounded-xl shadow-sm border border-ohm-lavender/10 p-12 text-center"
             >
-              <div className="w-16 h-16 bg-ohm-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileIcon className="w-8 h-8 text-ohm-gold" />
+              <div className="w-16 h-16 bg-ohm-lavender/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FileIcon className="w-8 h-8 text-ohm-lavender" />
               </div>
-              <h3 className="text-2xl font-bold text-ohm-dark mb-2">Už brzy</h3>
+              <h3 className="text-2xl font-bold text-ohm-deep mb-2">Už brzy</h3>
               <p className="text-ohm-slate mb-6">
                 Tato sekce je právě připravována. Vraťte se brzy pro více obsahu.
               </p>

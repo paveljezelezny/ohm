@@ -32,6 +32,37 @@ const stagger = {
   },
 };
 
+// Animated blob variants
+const blobMint = {
+  animate: {
+    borderRadius: ['60% 40% 30% 70% / 60% 30% 70% 40%', '30% 60% 70% 40% / 50% 60% 30% 60%', '60% 40% 30% 70% / 60% 30% 70% 40%'],
+    x: [0, 30, 0],
+    y: [0, -20, 0],
+    scale: [1, 1.08, 1],
+  },
+  transition: { duration: 9, repeat: Infinity, ease: 'easeInOut' },
+};
+
+const blobRose = {
+  animate: {
+    borderRadius: ['30% 60% 70% 40% / 50% 60% 30% 60%', '60% 40% 30% 70% / 60% 30% 70% 40%', '30% 60% 70% 40% / 50% 60% 30% 60%'],
+    x: [0, -25, 0],
+    y: [0, 25, 0],
+    scale: [1, 1.1, 1],
+  },
+  transition: { duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 0.5 },
+};
+
+const blobLavender = {
+  animate: {
+    borderRadius: ['70% 30% 40% 60% / 30% 70% 60% 40%', '40% 60% 30% 70% / 70% 30% 40% 60%', '70% 30% 40% 60% / 30% 70% 60% 40%'],
+    x: [0, 20, 0],
+    y: [0, -15, 0],
+    scale: [1, 1.07, 1],
+  },
+  transition: { duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 1 },
+};
+
 export default function Home() {
   const pillars = [
     {
@@ -70,24 +101,66 @@ export default function Home() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-ohm-dark">
-        {/* Animated bg blobs */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-ohm-deep">
+        {/* Animated fluid blobs background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          {/* Mint blob - top left */}
           <motion.div
-            animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-ohm-gold/10 rounded-full blur-3xl"
+            variants={blobMint}
+            animate="animate"
+            className="absolute -top-32 -left-32 w-[400px] h-[350px] blur-2xl opacity-70"
+            style={{
+              background: 'radial-gradient(ellipse at 30% 30%, #7AEDC6 0%, #7AEDC680 40%, transparent 75%)',
+            }}
+          />
+
+          {/* Rose blob - center right */}
+          <motion.div
+            variants={blobRose}
+            animate="animate"
+            className="absolute top-1/2 -right-20 w-[380px] h-[320px] blur-2xl opacity-60"
+            style={{
+              background: 'radial-gradient(ellipse at 40% 50%, #E8A0BF 0%, #E8A0BF70 45%, transparent 80%)',
+            }}
+          />
+
+          {/* Lavender blob - bottom left */}
+          <motion.div
+            variants={blobLavender}
+            animate="animate"
+            className="absolute -bottom-20 -left-40 w-[420px] h-[360px] blur-2xl opacity-65"
+            style={{
+              background: 'radial-gradient(ellipse at 50% 40%, #9B7AEA 0%, #9B7AEA75 45%, transparent 75%)',
+            }}
+          />
+
+          {/* Decorative geometric elements */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="absolute top-24 left-1/4 w-32 h-32 border border-white/10 rounded-full"
           />
           <motion.div
-            animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-lidi-coral/8 rounded-full blur-3xl"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            className="absolute bottom-1/3 right-1/4 w-24 h-24 border border-white/5 rounded-full"
           />
+
+          {/* Small + marks */}
           <motion.div
-            animate={{ x: [0, 20, 0], y: [0, 20, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-ohm-teal/5 rounded-full blur-3xl"
-          />
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-32 right-1/4 text-white/20 text-2xl font-light"
+          >
+            +
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            className="absolute bottom-1/3 left-1/3 text-white/15 text-2xl font-light"
+          >
+            ×
+          </motion.div>
         </div>
 
         <motion.div
@@ -97,14 +170,15 @@ export default function Home() {
           className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32"
         >
           {/* Tagline chip */}
-          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 bg-ohm-gold/15 border border-ohm-gold/30 rounded-full mb-8">
-            <Leaf className="w-4 h-4 text-ohm-gold" />
-            <span className="text-sm font-medium text-ohm-gold">Organic HR Marketing</span>
+          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 bg-ohm-mint/15 border border-ohm-mint/30 rounded-full mb-8">
+            <Leaf className="w-4 h-4 text-ohm-mint" />
+            <span className="text-sm font-medium text-ohm-mint">Organic HR Marketing</span>
           </motion.div>
 
           <motion.h1
             variants={fadeInUp}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Budujte značku
             <br />
@@ -115,7 +189,7 @@ export default function Home() {
 
           <motion.p
             variants={fadeInUp}
-            className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg sm:text-xl text-ohm-slate max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             Pomáháme firmám vybudovat autentický employer brand organicky — skrze strategii, profesionální obsah a skutečné příběhy vašich lidí.
           </motion.p>
@@ -142,22 +216,22 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 mx-auto border-2 border-white/20 rounded-full flex justify-center pt-2"
+              className="w-6 h-10 mx-auto border-2 border-ohm-mint/30 rounded-full flex justify-center pt-2"
             >
-              <div className="w-1.5 h-1.5 bg-ohm-gold rounded-full" />
+              <div className="w-1.5 h-1.5 bg-ohm-mint rounded-full" />
             </motion.div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* ===================== KLIENTI / TRUST BAR ===================== */}
-      <section className="bg-ohm-navy py-12 border-y border-white/5">
+      <section className="bg-ohm-dark py-12 border-y border-ohm-violet/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-sm text-gray-500 uppercase tracking-widest mb-8"
+            className="text-center text-sm text-ohm-slate uppercase tracking-widest mb-8"
           >
             Důvěřují nám
           </motion.p>
@@ -172,7 +246,7 @@ export default function Home() {
               <motion.div
                 key={name}
                 variants={fadeInUp}
-                className="text-gray-500 font-semibold text-lg tracking-wide hover:text-ohm-gold transition-colors duration-300 cursor-default"
+                className="text-ohm-slate font-semibold text-lg tracking-wide hover:text-ohm-mint transition-colors duration-300 cursor-default"
               >
                 {name}
               </motion.div>
@@ -191,7 +265,7 @@ export default function Home() {
             variants={stagger}
             className="text-center mb-16"
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-ohm-dark mb-4">
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-ohm-deep mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Tři pilíře OHM
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-lg text-ohm-slate max-w-2xl mx-auto">
@@ -206,27 +280,47 @@ export default function Home() {
             variants={stagger}
             className="grid md:grid-cols-3 gap-8"
           >
-            {pillars.map((p, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                whileHover={{ y: -8 }}
-                className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-ohm-gold/10 hover:border-ohm-gold/30"
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-ohm-gold to-ohm-gold-light rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <p.icon className="w-7 h-7 text-ohm-dark" />
-                </div>
-                <h3 className="text-xl font-bold text-ohm-dark mb-3">{p.title}</h3>
-                <p className="text-ohm-slate leading-relaxed">{p.text}</p>
-              </motion.div>
-            ))}
+            {pillars.map((p, i) => {
+              const gradients = [
+                'from-ohm-mint to-ohm-lavender',
+                'from-ohm-rose to-ohm-peach',
+                'from-ohm-lavender to-ohm-mint',
+              ];
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeInUp}
+                  whileHover={{ y: -8 }}
+                  className="group glass-card-light p-8 hover:border-ohm-mint/40 transition-all duration-300"
+                >
+                  <div className={`w-14 h-14 bg-gradient-to-br ${gradients[i]} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <p.icon className="w-7 h-7 text-ohm-deep" />
+                  </div>
+                  <h3 className="text-xl font-bold text-ohm-deep mb-3">{p.title}</h3>
+                  <p className="text-ohm-slate leading-relaxed">{p.text}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* ===================== PROCES ===================== */}
-      <section className="bg-ohm-dark py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-ohm-dark py-20 md:py-28 overflow-hidden">
+        {/* Background blob decoration */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 10, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute -bottom-32 -right-32 w-96 h-96 blur-2xl opacity-20"
+          style={{
+            background: 'radial-gradient(ellipse, #7AEDC6 0%, #7AEDC660 50%, transparent 80%)',
+          }}
+        />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -234,10 +328,10 @@ export default function Home() {
             variants={stagger}
             className="text-center mb-16"
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Jak spolupráce funguje
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="text-lg text-ohm-slate max-w-2xl mx-auto">
               Od prvního setkání po měřitelné výsledky — transparentní proces, který funguje.
             </motion.p>
           </motion.div>
@@ -255,16 +349,16 @@ export default function Home() {
                 variants={fadeInUp}
                 className="relative group"
               >
-                <div className="glass-card p-8 h-full hover:border-ohm-gold/30 transition-all duration-300">
-                  <div className="text-4xl font-bold text-ohm-gold/30 group-hover:text-ohm-gold/60 transition-colors mb-4">
+                <div className="glass-card p-8 h-full hover:border-ohm-mint/30 transition-all duration-300">
+                  <div className="text-4xl font-bold text-ohm-mint/30 group-hover:text-ohm-mint/60 transition-colors mb-4">
                     {s.num}
                   </div>
                   <h3 className="text-lg font-bold text-white mb-3">{s.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
+                  <p className="text-ohm-slate text-sm leading-relaxed">{s.desc}</p>
                 </div>
                 {i < 3 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                    <ChevronRight className="w-6 h-6 text-ohm-gold/30" />
+                    <ChevronRight className="w-6 h-6 text-ohm-mint/30" />
                   </div>
                 )}
               </motion.div>
@@ -274,11 +368,19 @@ export default function Home() {
       </section>
 
       {/* ===================== LIDI PROSÍM PREVIEW ===================== */}
-      <section className="bg-lidi-warm py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="absolute -top-20 -right-20 w-96 h-96 bg-lidi-coral/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-lidi-orange/10 rounded-full blur-3xl" />
-        </div>
+      <section className="bg-gradient-to-br from-ohm-cream via-white to-ohm-rose/10 py-20 md:py-28 relative overflow-hidden">
+        {/* Decorative rose-tinted blobs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+            x: [0, 30, 0],
+          }}
+          transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-20 right-0 w-72 h-72 blur-3xl opacity-15"
+          style={{
+            background: 'radial-gradient(ellipse, #E8A0BF 0%, #E8A0BF60 50%, transparent 80%)',
+          }}
+        />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -290,11 +392,11 @@ export default function Home() {
           >
             {/* Left: Text */}
             <motion.div variants={fadeInUp}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lidi-coral/15 border border-lidi-coral/30 rounded-full mb-6">
-                <Mic className="w-4 h-4 text-lidi-coral" />
-                <span className="text-sm font-medium text-lidi-coral">Podcast</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-ohm-rose/15 border border-ohm-rose/30 rounded-full mb-6">
+                <Mic className="w-4 h-4 text-ohm-rose" />
+                <span className="text-sm font-medium text-ohm-rose">Podcast</span>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ohm-dark mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ohm-deep mb-6" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 LIDI, prosím...
               </h2>
               <p className="text-lg text-ohm-slate mb-6 leading-relaxed">
@@ -313,13 +415,13 @@ export default function Home() {
 
             {/* Right: Visual */}
             <motion.div variants={fadeInUp}>
-              <div className="bg-white rounded-2xl shadow-xl p-8 border border-lidi-coral/10">
+              <div className="glass-card-light p-8 border border-ohm-rose/20">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-lidi-coral to-lidi-orange rounded-xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-ohm-rose to-ohm-peach rounded-xl flex items-center justify-center">
                     <Mic className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-ohm-dark text-lg">LIDI, prosím...</h3>
+                    <h3 className="font-bold text-ohm-deep text-lg">LIDI, prosím...</h3>
                     <p className="text-ohm-slate text-sm">Podcast by OHM</p>
                   </div>
                 </div>
@@ -332,13 +434,13 @@ export default function Home() {
                 ].map((ep, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-lidi-warm/50 transition-colors mb-2 last:mb-0"
+                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-ohm-rose/10 transition-colors mb-2 last:mb-0"
                   >
-                    <div className="w-10 h-10 bg-lidi-coral/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-lidi-coral font-bold text-sm">E{i + 1}</span>
+                    <div className="w-10 h-10 bg-ohm-rose/15 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-ohm-rose font-bold text-sm">E{i + 1}</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-ohm-dark text-sm truncate">{ep.topic}</p>
+                      <p className="font-semibold text-ohm-deep text-sm truncate">{ep.topic}</p>
                       <p className="text-ohm-slate text-xs">{ep.guest} · {ep.company}</p>
                     </div>
                     <ChevronRight className="w-4 h-4 text-ohm-slate flex-shrink-0" />
@@ -360,10 +462,10 @@ export default function Home() {
             variants={stagger}
             className="text-center mb-16"
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Proč právě OHM
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="text-lg text-ohm-slate max-w-2xl mx-auto">
               Jedinečná kombinace HR strategie a profesionální produkce obsahu na českém trhu.
             </motion.p>
           </motion.div>
@@ -375,30 +477,34 @@ export default function Home() {
             variants={stagger}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {reasons.map((r, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                whileHover={{ y: -4 }}
-                className="group glass-card p-6 hover:border-ohm-gold/30 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-ohm-gold/15 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-ohm-gold/25 transition-colors">
-                    <r.icon className="w-6 h-6 text-ohm-gold" />
+            {reasons.map((r, i) => {
+              const iconColors = ['bg-ohm-mint/15', 'bg-ohm-rose/15', 'bg-ohm-lavender/15'];
+              const iconTextColors = ['text-ohm-mint', 'text-ohm-rose', 'text-ohm-lavender'];
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeInUp}
+                  whileHover={{ y: -4 }}
+                  className="group glass-card p-6 hover:border-ohm-mint/30 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 ${iconColors[i % 3]} rounded-lg flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-opacity`}>
+                      <r.icon className={`w-6 h-6 ${iconTextColors[i % 3]}`} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-2">{r.title}</h3>
+                      <p className="text-ohm-slate text-sm leading-relaxed">{r.text}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-white mb-2">{r.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{r.text}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* ===================== STATS BAR ===================== */}
-      <section className="bg-ohm-gold py-16">
+      <section className="bg-gradient-to-r from-ohm-mint to-ohm-lavender py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -414,8 +520,8 @@ export default function Home() {
               { num: '50+', label: 'Podcastových epizod' },
             ].map((s, i) => (
               <motion.div key={i} variants={fadeInUp}>
-                <div className="text-3xl sm:text-4xl font-bold text-ohm-dark mb-1">{s.num}</div>
-                <div className="text-ohm-dark/70 text-sm font-medium">{s.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold text-ohm-deep mb-1">{s.num}</div>
+                <div className="text-ohm-deep/70 text-sm font-medium">{s.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -423,8 +529,32 @@ export default function Home() {
       </section>
 
       {/* ===================== FOUNDERS STRIP ===================== */}
-      <section className="bg-ohm-dark py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-ohm-dark py-20 md:py-28 overflow-hidden">
+        {/* Decorative blobs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.12, 1],
+            rotate: [0, -10, 0],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-0 left-12 w-80 h-80 blur-3xl opacity-20"
+          style={{
+            background: 'radial-gradient(ellipse, #7AEDC6 0%, #7AEDC660 50%, transparent 80%)',
+          }}
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 10, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+          className="absolute bottom-0 right-8 w-72 h-72 blur-3xl opacity-15"
+          style={{
+            background: 'radial-gradient(ellipse, #E8A0BF 0%, #E8A0BF60 50%, transparent 80%)',
+          }}
+        />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -432,7 +562,7 @@ export default function Home() {
             variants={stagger}
             className="text-center mb-16"
           >
-            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Za OHM stojí
             </motion.h2>
           </motion.div>
@@ -445,48 +575,48 @@ export default function Home() {
             className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             {/* Martin */}
-            <motion.div variants={fadeInUp} className="glass-card p-8 hover:border-ohm-gold/30 transition-all duration-300">
+            <motion.div variants={fadeInUp} className="glass-card p-8 hover:border-ohm-mint/30 transition-all duration-300">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-ohm-gold/30 to-ohm-gold/10 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-8 h-8 text-ohm-gold" />
+                <div className="w-16 h-16 bg-gradient-to-br from-ohm-mint/30 to-ohm-mint/10 rounded-full flex items-center justify-center">
+                  <Sparkles className="w-8 h-8 text-ohm-mint" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Martin Kaleta</h3>
-                  <p className="text-ohm-gold text-sm font-medium">Human Capital</p>
+                  <p className="text-ohm-mint text-sm font-medium">Human Capital</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              <p className="text-ohm-slate text-sm leading-relaxed mb-4">
                 15+ let v HR. Specialista na employer branding, recruitment a firemní kulturu. Gallup certifikovaný konzultant.
               </p>
               <div className="flex gap-3">
-                <a href="https://www.linkedin.com/in/martin-kaleta-human-capital/" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-gold hover:text-ohm-gold-light transition-colors font-medium">
+                <a href="https://www.linkedin.com/in/martin-kaleta-human-capital/" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-mint hover:text-ohm-mint-light transition-colors font-medium">
                   LinkedIn →
                 </a>
-                <a href="https://humancapital.cz" target="_blank" rel="noopener noreferrer" className="text-sm text-lidi-coral hover:text-lidi-orange transition-colors font-medium">
+                <a href="https://humancapital.cz" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-rose hover:text-ohm-rose-light transition-colors font-medium">
                   Human Capital →
                 </a>
               </div>
             </motion.div>
 
             {/* Pavel */}
-            <motion.div variants={fadeInUp} className="glass-card p-8 hover:border-ohm-gold/30 transition-all duration-300">
+            <motion.div variants={fadeInUp} className="glass-card p-8 hover:border-ohm-rose/30 transition-all duration-300">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-lidi-coral/30 to-lidi-coral/10 rounded-full flex items-center justify-center">
-                  <Mic className="w-8 h-8 text-lidi-coral" />
+                <div className="w-16 h-16 bg-gradient-to-br from-ohm-rose/30 to-ohm-rose/10 rounded-full flex items-center justify-center">
+                  <Mic className="w-8 h-8 text-ohm-rose" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Pavel Železný</h3>
-                  <p className="text-lidi-coral text-sm font-medium">Pracovna / Podcasters</p>
+                  <p className="text-ohm-rose text-sm font-medium">Pracovna / Podcasters</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              <p className="text-ohm-slate text-sm leading-relaxed mb-4">
                 5+ let v produkci profesionálního obsahu pro firmy. Zakladatel Pracovny a Podcasters — studia pro firemní podcasty.
               </p>
               <div className="flex gap-3">
-                <a href="https://www.linkedin.com/in/pavel-zelezny/" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-gold hover:text-ohm-gold-light transition-colors font-medium">
+                <a href="https://www.linkedin.com/in/pavel-zelezny/" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-mint hover:text-ohm-mint-light transition-colors font-medium">
                   LinkedIn →
                 </a>
-                <a href="https://pracovna.cz" target="_blank" rel="noopener noreferrer" className="text-sm text-lidi-coral hover:text-lidi-orange transition-colors font-medium">
+                <a href="https://pracovna.cz" target="_blank" rel="noopener noreferrer" className="text-sm text-ohm-rose hover:text-ohm-rose-light transition-colors font-medium">
                   Pracovna →
                 </a>
               </div>
@@ -496,10 +626,19 @@ export default function Home() {
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="relative bg-gradient-to-br from-ohm-navy to-ohm-dark py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ohm-gold/5 rounded-full blur-3xl" />
-        </div>
+      <section className="relative bg-ohm-deep py-20 md:py-28 overflow-hidden">
+        {/* Centered lavender blob */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 15, 0],
+          }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] blur-3xl opacity-25"
+          style={{
+            background: 'radial-gradient(ellipse, #9B7AEA 0%, #9B7AEA60 50%, transparent 75%)',
+          }}
+        />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -511,12 +650,13 @@ export default function Home() {
             <motion.h2
               variants={fadeInUp}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Připraveni budovat značku,
               <br />
               která přitahuje ty správné lidi?
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="text-lg text-ohm-slate mb-10 max-w-2xl mx-auto">
               Začněme nezávaznou konzultací. Povíme si o vašich výzvách a navrhneme řešení na míru.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
